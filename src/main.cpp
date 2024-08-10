@@ -11,7 +11,7 @@
 // If Echo recieves a pulse of 38 us width, there is no object in front
 
 // We can use the same pin for both trigger and echo.
-// If we use same pin for these two, the HC-SR02 is said to be in 3-pin mode
+// If we use same pin for these two, the HC-SR04 is said to be in 3-pin mode
 #define TRIGGER_PIN 10
 #define ECHO_PIN 13
 #define MAX_DISTANCE_CM 400
@@ -32,7 +32,7 @@ float temperature;  // temperature in celcius
 float humidity;     // humidity in percentage
 float sound_m;      // speed of sound in m/s
 float sound_cm;     // speed of sound in cm/ms
-int iterations = 5; // iterations to calculate echo duration of HC-SR02
+int iterations = 5; // iterations to calculate echo duration of HC-SR04
 
 void setup() {
   Serial.begin(9600);
@@ -60,10 +60,10 @@ void loop() {
   // convert speed of sound from m/s to cm/ms
   sound_cm = sound_m / 10000;
 
-  // calculate duration of echoes from HC-SR02 using median value
+  // calculate duration of echoes from HC-SR04 using median value
   duration = sonar.ping_median(iterations);
 
-  // calculate distance (in cm) of object from HC-SR02 
+  // calculate distance (in cm) of object from HC-SR04 
   distance = (duration / 2) * 0.0343;
 
   // Send results to Serial Monitor
